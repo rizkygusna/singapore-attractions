@@ -31,19 +31,7 @@ const Locations = () => {
           setError(error);
         }
       );
-  }, []);
-
-  // const activeHandler = (menuId) => {
-  //   if (activeMenu === '') {
-  //     document.getElementById(menuId).classList.add('active');
-  //     setActiveMenu(menuId);
-  //   } else {
-  //     document.getElementById(activeMenu).classList.remove('active');
-  //     document.getElementById(menuId).classList.add('active');
-  //     setActiveMenu(menuId);
-  //   }
-  //   console.log(document.getElementById(menuId), activeMenu);
-  // };
+  }, [url]);
 
   //if error
   if (error) {

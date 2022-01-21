@@ -1,7 +1,8 @@
 @use '/src/scss/colors' as *;
+@use '/src/scss/reset' as *;
 
 .sidebar {
-  width: 150px;
+  width: 207px;
   height: 100vh;
   background-color: rgb(49, 53, 65);
   display: flex;
