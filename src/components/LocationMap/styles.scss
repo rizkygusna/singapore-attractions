@@ -1,4 +1,8 @@
-.leaflet-container {
-  width: 100%;
-  height: 85vh;
+.location-map {
+  height: 100%;
+
+  .leaflet-container {
+    width: 100%;
+    height: 100%;
+  }
 }
