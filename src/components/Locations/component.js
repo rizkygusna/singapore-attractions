@@ -6,7 +6,7 @@ const Locations = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [locations, setLocations] = useState([]);
-  const [activeMenu, setActiveMenu] = useState('1.286920');
+  const [activeMenu, setActiveMenu] = useState('');
 
   //this endpoint is from json server
   const url =
@@ -17,8 +17,14 @@ const Locations = () => {
   useEffect(() => {
     //fetch url
     fetch(url)
-      //convert response to json
-      .then((res) => res.json())
+      .then((res) => {
+        //if response is not okay
+        if (!res.ok) {
+          setIsLoaded(true);
+          setError('Error 404 data not found');
+          // if response is ok convert data to json
+        } else return res.json();
+      })
       //assign the converted data to locations state
       .then(
         (data) => {
