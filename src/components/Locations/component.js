@@ -52,7 +52,7 @@ const Locations = () => {
       <div className='location-list'>
         {/* output location list using map() */}
         {locations.map((location) => (
-          <div className='location-list-item'>
+          <div className='location-list-item' key={location.latitude}>
             <a
               href='#'
               id={location.latitude}

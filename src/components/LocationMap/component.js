@@ -58,7 +58,10 @@ const LocationMap = () => {
           />
           {/* display all point of locations */}
           {locations.map((location) => (
-            <Marker position={[location.latitude, location.longitude]}>
+            <Marker
+              position={[location.latitude, location.longitude]}
+              key={location.latitude}
+            >
               <Popup>
                 <h2>{location.place}</h2>
               </Popup>
