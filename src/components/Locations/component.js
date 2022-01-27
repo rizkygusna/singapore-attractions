@@ -12,31 +12,32 @@ const Locations = () => {
   const url =
     'https://my-json-server.typicode.com/rizkygusna/singapore-attractions/locations';
 
-  //this AJAX call is copied from reactjs documentation.
-  //you can access the documentation in this link https://reactjs.org/docs/faq-ajax.html
   useEffect(() => {
-    //fetch url
-    fetch(url)
-      .then((res) => {
-        //if response is not okay
-        if (!res.ok) {
-          setIsLoaded(true);
-          setError('Error 404 data not found');
-          // if response is ok convert data to json
-        } else return res.json();
-      })
-      //assign the converted data to locations state
-      .then(
-        (data) => {
-          setIsLoaded(true);
-          setLocations(data);
-        },
-        //error handling
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      );
+    async function fetchData() {
+      //fetch url
+      await fetch(url)
+        .then((res) => {
+          //if response is not okay
+          if (!res.ok) {
+            setIsLoaded(true);
+            setError('Error 404 data not found');
+            // if response is ok convert data to json
+          } else return res.json();
+        })
+        //assign the converted data to locations state
+        .then(
+          (data) => {
+            setIsLoaded(true);
+            setLocations(data);
+          },
+          //error handling
+          (error) => {
+            setIsLoaded(true);
+            setError(error);
+          }
+        );
+    }
+    fetchData();
   }, [url]);
 
   //if error
@@ -55,7 +56,7 @@ const Locations = () => {
             <a
               href='#'
               id={location.latitude}
-              className={activeMenu == location.latitude ? 'active' : ''}
+              className={activeMenu === location.latitude ? 'active' : ''}
             >
               {location.place}
             </a>
